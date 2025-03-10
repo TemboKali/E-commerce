@@ -14,10 +14,11 @@
                                 <h5 class="product-name">{{ $product->name }}</h5>
                                 <p class="product-price">Kshs.{{ number_format($product->price, 2) }}</p>
                                 <div class="d-flex justify-content-center gap-2">
-                                    <form action="" method="POST" class="d-inline">
+                                    <form action="{{ route('buy.now') }}" method="POST" class="d-inline">
                                         @csrf
                                         <input type="hidden">
-                                        <button type="submit" class="btn btn-danger buy-now">Buy now</button>
+                                        <button type="submit" class="btn btn-danger buy-now" name="product_id"
+                                            value="{{ $product->id }}">Buy now</button>
                                     </form>
                                     <form action="{{ route('cart.add') }}" method="POST" class="d-inline"
                                         onsubmit="return myFunc(event)">

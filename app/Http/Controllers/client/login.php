@@ -24,7 +24,7 @@ class login extends Controller
                 return redirect()->back()->withErrors(['email' => 'Your email address is not verified. Please check your email for the verification code.']);
             }
             $request->session()->regenerate();
-            return redirect()->route('client.userDashboard')->with('success', 'Logged in successfully!');
+            return redirect()->intended(route('client.userDashboard'))->with('success', 'Logged in successfully!');
         }
         return back()->with('error', 'Invalid credentials. Please try again.');
     }

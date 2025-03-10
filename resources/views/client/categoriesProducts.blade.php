@@ -4,7 +4,6 @@
     @include('client.sections.header')
     <div class="container mt-4">
         <div class="row">
-            <!-- Sidebar: Categories List -->
             <div class="col-md-3">
                 <h4 class="text-black">Categories</h4>
                 <ul class="list-group">

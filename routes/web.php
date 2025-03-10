@@ -12,6 +12,8 @@ use App\Http\Controllers\client\register;
 use App\Http\Controllers\client\auth\VerificationController;
 use App\Http\Controllers\client\userDashboard;
 use App\Http\Controllers\paymentMethod\paypalController;
+use App\Http\Controllers\Client\checkOut;
+use App\Http\Controllers\Client\CustomerInfoController;
 Route::get('/', [home::class, 'cats']);
 Route::middleware('auth:web')->prefix('client')->group(function () {
     Route::get('/dashboard', [userDashboard::class, 'index'])->name('client.userDashboard');
@@ -34,8 +36,11 @@ Route::middleware('guest:web')->prefix('client')->group(function () {
     Route::get('/paypal', [paypalController::class, 'paywithPaypal'])->name('paypal.view');
     Route::post('/paypal/payment', [paypalController::class, 'postPaymentwithPaypal'])->name('postpayment');
     Route::get('/paypal/status', [paypalController::class, 'getPaymentStatus'])->name('status');
+    Route::post('/buy-now', [checkOut::class, 'buyNow'])->name('buy.now');
+    Route::get('/customer-info', [CustomerInfoController::class, 'showForm'])->name('client.customerInfo');
+    Route::post('/customer-info', [CustomerInfoController::class, 'storeInfo'])->name('client.storeInfo');
+    Route::get('/address/{id}', [CustomerInfoController::class, 'showAddress'])->name('client.address');
 });
-
 
 
 /*
